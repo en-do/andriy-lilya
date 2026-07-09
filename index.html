@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Marck+Script&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="assets/image-slot.js"></script>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;background:radial-gradient(120% 90% at 50% 0%,#efe7d6 0%,#e4dac6 60%,#ded2ba 100%);min-height:100vh}
+    a{color:#8a6d34;text-decoration:none}
+    a:hover{color:#b1904f}
+    image-slot{--is-bg:#f0e9d9}
+    ::selection{background:#dfcfa0}
+    @keyframes shk{0%,100%{transform:translateX(0)}18%{transform:translateX(-9px)}36%{transform:translateX(8px)}54%{transform:translateX(-6px)}72%{transform:translateX(4px)}88%{transform:translateX(-2px)}}
+  </style>
+</helmet>
+<div style="min-height:100vh;display:flex;justify-content:center;padding:44px 18px 60px;font-family:'PT Serif',Georgia,serif">
+
+  <canvas id="confetti-canvas" style="position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:70"></canvas>
+
+  <sc-if value="{{ locked }}" hint-placeholder-val="{{ true }}">
+    <div style="{{ gateStyle }}">
+      <img src="assets/fl-tl.png" alt="" style="position:fixed;top:0;left:0;width:26vw;max-width:230px;pointer-events:none">
+      <img src="assets/fl-tr.png" alt="" style="position:fixed;top:0;right:0;width:27vw;max-width:240px;pointer-events:none">
+      <img src="assets/fl-bl.png" alt="" style="position:fixed;bottom:0;left:0;width:26vw;max-width:230px;pointer-events:none">
+      <img src="assets/fl-br.png" alt="" style="position:fixed;bottom:0;right:0;width:27vw;max-width:235px;pointer-events:none">
+      <div style="{{ gateCardStyle }}">
+        <svg width="60" height="42" viewBox="0 0 116 80" style="display:block;margin:0 auto 14px" aria-hidden="true">
+          <defs>
+            <linearGradient id="ringGate" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e6cd88"></stop>
+              <stop offset=".5" stop-color="#b1904f"></stop>
+              <stop offset="1" stop-color="#8a6d34"></stop>
+            </linearGradient>
+          </defs>
+          <ellipse cx="76" cy="50" rx="26" ry="27" fill="none" stroke="url(#ringGate)" stroke-width="6"></ellipse>
+          <ellipse cx="44" cy="50" rx="26" ry="27" fill="none" stroke="url(#ringGate)" stroke-width="6"></ellipse>
+          <g transform="translate(76,17)">
+            <path d="M0 -11 L9 -1 L0 13 L-9 -1 Z" fill="#f4e7b6" stroke="#b1904f" stroke-width="1.8" stroke-linejoin="round"></path>
+            <path d="M-9 -1 L9 -1 M-4.5 -6 L0 -1 L4.5 -6 M0 -1 L0 13" stroke="#c9ad63" stroke-width="1" fill="none"></path>
+          </g>
+        </svg>
+        <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.34em;font-size:12px;color:#9a7c3e;text-transform:uppercase;padding-left:.34em">Наше запрошення</div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:30px;color:#46603f;margin:12px 0 0;letter-spacing:.04em">Ласкаво просимо</h2>
+        <div style="font-family:'Marck Script',cursive;font-size:30px;color:#b1904f;margin:4px 0 0">Лілія та Андрій</div>
+        <p style="font-size:15px;line-height:1.7;color:#5b5440;margin:20px auto 0;max-width:330px">Ця сторінка створена з любов'ю. Щоб відкрити її, введіть дату, коли нас звела доля.</p>
+        <form onSubmit="{{ submit }}" style="margin-top:26px;display:flex;flex-direction:column;align-items:center;gap:14px">
+          <div style="position:relative;display:flex;align-items:center;width:240px;max-width:100%">
+            <input id="date-input" type="text" inputmode="numeric" autocomplete="off" placeholder="дд.мм.рр" maxlength="8" onFocus="{{ clearErr }}" onInput="{{ maskInput }}" onDblClick="{{ openCalendar }}" style="width:100%;text-align:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:23px;letter-spacing:.14em;color:#46603f;background:#fffdf8;border:1.4px solid #c2a35f;border-radius:10px;padding:12px 44px 12px 14px;outline:none">
+            <button type="button" onClick="{{ openCalendar }}" aria-label="Відкрити календар" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:transparent;border:none;cursor:pointer;padding:0">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9a7c3e" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"></rect><path d="M3 9h18M8 2.5v4M16 2.5v4"></path><circle cx="8" cy="13" r="1.1" fill="#9a7c3e" stroke="none"></circle><circle cx="12" cy="13" r="1.1" fill="#9a7c3e" stroke="none"></circle><circle cx="16" cy="13" r="1.1" fill="#9a7c3e" stroke="none"></circle><circle cx="8" cy="17" r="1.1" fill="#9a7c3e" stroke="none"></circle><circle cx="12" cy="17" r="1.1" fill="#9a7c3e" stroke="none"></circle></svg>
+            </button>
+            <input id="date-native" type="date" min="1950-01-01" max="2035-12-31" onChange="{{ onNativePick }}" style="position:absolute;right:8px;bottom:-2px;width:1px;height:1px;opacity:0;pointer-events:none">
+          </div>
+          <button type="submit" style="font-family:'Cormorant Garamond',serif;letter-spacing:.16em;text-transform:uppercase;font-size:14px;font-weight:600;color:#f6efe0;background:#46603f;border:1.4px solid #3a5236;border-radius:30px;padding:13px 36px;cursor:pointer">Відкрити &#9825;</button>
+        </form>
+        <sc-if value="{{ err }}" hint-placeholder-val="{{ false }}">
+          <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#b0553f;margin-top:14px">Дата не збігається — спробуйте ще раз</div>
+        </sc-if>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:12.5px;color:#a99f80;margin-top:18px;letter-spacing:.03em">Підказка: день усіх закоханих &#9825;</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <div style="position:relative;width:620px;max-width:100%;background:linear-gradient(180deg,#fbf6ec 0%,#f9f3e6 100%);box-shadow:0 30px 70px -30px rgba(70,55,20,.4),0 2px 8px rgba(70,55,20,.12);overflow:hidden">
+
+    <!-- gold frame -->
+    <div style="position:absolute;inset:15px;border:1.4px solid #c2a35f;pointer-events:none;z-index:1"></div>
+    <div style="position:absolute;inset:21px;border:.7px solid #d3bd85;pointer-events:none;z-index:1"></div>
+
+    <!-- floral corners -->
+    <img src="assets/fl-tl.png" alt="" style="position:absolute;top:-6px;left:-6px;width:200px;z-index:3;pointer-events:none">
+    <img src="assets/fl-tr.png" alt="" style="position:absolute;top:-6px;right:-6px;width:210px;z-index:3;pointer-events:none">
+    <img src="assets/fl-bl.png" alt="" style="position:absolute;bottom:-6px;left:-6px;width:200px;z-index:3;pointer-events:none">
+    <img src="assets/fl-br.png" alt="" style="position:absolute;bottom:-6px;right:-6px;width:205px;z-index:3;pointer-events:none">
+
+    <!-- content -->
+    <div style="position:relative;z-index:4;padding:60px 52px 64px">
+
+      <!-- header -->
+      <div style="text-align:center">
+        <svg width="66" height="46" viewBox="0 0 116 80" style="display:block;margin:0 auto 16px" aria-hidden="true">
+          <defs>
+            <linearGradient id="ringHdr" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e6cd88"></stop>
+              <stop offset=".5" stop-color="#b1904f"></stop>
+              <stop offset="1" stop-color="#8a6d34"></stop>
+            </linearGradient>
+          </defs>
+          <ellipse cx="76" cy="50" rx="26" ry="27" fill="none" stroke="url(#ringHdr)" stroke-width="6"></ellipse>
+          <ellipse cx="44" cy="50" rx="26" ry="27" fill="none" stroke="url(#ringHdr)" stroke-width="6"></ellipse>
+          <g transform="translate(76,17)">
+            <path d="M0 -11 L9 -1 L0 13 L-9 -1 Z" fill="#f4e7b6" stroke="#b1904f" stroke-width="1.8" stroke-linejoin="round"></path>
+            <path d="M-9 -1 L9 -1 M-4.5 -6 L0 -1 L4.5 -6 M0 -1 L0 13" stroke="#c9ad63" stroke-width="1" fill="none"></path>
+          </g>
+        </svg>
+        <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.42em;font-size:14px;font-weight:600;color:#9a7c3e;text-transform:uppercase;padding-left:.42em">Таїнство Вінчання</div>
+      </div>
+
+      <!-- main photo (arch) -->
+      <div style="width:300px;max-width:78%;margin:30px auto 0;height:392px;border-radius:150px 150px 12px 12px;overflow:hidden;border:1.5px solid #c2a35f;box-shadow:0 16px 34px -18px rgba(70,55,20,.5);background:#f0e9d9">
+        <image-slot id="main-photo" style="width:100%;height:100%" shape="rect" placeholder="Головне фото пари"></image-slot>
+      </div>
+
+      <!-- names -->
+      <div style="text-align:center;margin-top:28px">
+        <div style="font-family:'Marck Script',cursive;font-size:52px;line-height:1.05;color:#46603f">Лілія<span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;color:#b1904f;margin:0 12px;vertical-align:6px">та</span>Андрій</div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin:18px auto 0">
+          <span style="width:52px;height:1px;background:linear-gradient(90deg,transparent,#c3a869)"></span>
+          <span style="width:7px;height:7px;transform:rotate(45deg);border:1px solid #b1904f;display:inline-block"></span>
+          <span style="width:52px;height:1px;background:linear-gradient(90deg,#c3a869,transparent)"></span>
+        </div>
+        <div style="font-family:'Cormorant Garamond',serif;font-weight:600;letter-spacing:.16em;font-size:19px;color:#46603f;margin-top:16px;text-transform:uppercase">11 липня 2026</div>
+        <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.24em;font-size:12.5px;color:#8a836b;margin-top:5px;text-transform:uppercase">Мюнхен · Німеччина</div>
+      </div>
+
+      <!-- greeting -->
+      <div style="text-align:center;margin-top:42px">
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;letter-spacing:.14em;font-size:26px;color:#46603f;margin:0 0 18px;text-transform:uppercase">Шановні гості!</h2>
+        <p style="font-size:16px;line-height:1.85;color:#5b5440;margin:0 auto;max-width:420px">З великою радістю запрошуємо вас розділити з нами особливу та хвилюючу подію — <span style="font-style:italic;color:#46603f">Таїнство Вінчання</span>.</p>
+        <p style="font-size:16px;line-height:1.85;color:#5b5440;margin:20px auto 0;max-width:420px">Для нас буде великою честю та щастям бачити вас поруч у цей світлий день, коли ми перед Богом поєднаємо свої серця та долі.</p>
+        <p style="font-size:16px;line-height:1.85;color:#5b5440;margin:20px auto 0;max-width:420px">Нехай спільна молитва, щирі побажання та теплі обійми рідних і друзів зроблять цей день незабутнім.</p>
+      </div>
+
+      <!-- ornament -->
+      <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin:40px auto">
+        <span style="width:70px;height:1px;background:linear-gradient(90deg,transparent,#c3a869)"></span>
+        <span style="font-family:'Cormorant Garamond',serif;color:#b1904f;font-size:20px">&#10086;</span>
+        <span style="width:70px;height:1px;background:linear-gradient(90deg,#c3a869,transparent)"></span>
+      </div>
+
+      <!-- quote -->
+      <blockquote style="text-align:center;margin:0 auto;max-width:400px">
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:23px;line-height:1.5;color:#46603f;margin:0">«Любов ніколи не перестає, вона все зносить, усьому вірить, на все сподівається, все терпить.»</p>
+        <cite style="display:block;font-family:'Cormorant Garamond',serif;font-style:normal;letter-spacing:.2em;font-size:12px;color:#9a7c3e;margin-top:16px;text-transform:uppercase">1 Кор. 13</cite>
+      </blockquote>
+
+      <!-- VIDEO -->
+      <div style="margin-top:52px">
+        <div style="text-align:center;margin-bottom:20px">
+          <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.34em;font-size:12px;color:#9a7c3e;text-transform:uppercase;padding-left:.34em">Наша історія</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#46603f;margin:6px 0 0">Відео</h3>
+        </div>
+        <div style="position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;border:1.5px solid #c2a35f;box-shadow:0 14px 30px -18px rgba(70,55,20,.45);background:#ece4d2">
+          <image-slot id="video-poster" style="width:100%;height:100%" shape="rect" placeholder="Постер відео"></image-slot>
+          <a href="{{ videoHref }}" target="_blank" rel="noopener" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+            <span style="width:66px;height:66px;border-radius:50%;background:rgba(251,246,236,.9);box-shadow:0 6px 18px rgba(70,55,20,.3);display:flex;align-items:center;justify-content:center;border:1px solid #c2a35f">
+              <span style="width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:19px solid #b1904f;margin-left:5px"></span>
+            </span>
+          </a>
+        </div>
+        <div style="text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#8a836b;margin-top:12px">Натисніть, щоб переглянути наше відео</div>
+      </div>
+
+      <!-- SONG -->
+      <div style="margin-top:52px">
+        <div style="text-align:center;margin-bottom:20px">
+          <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.34em;font-size:12px;color:#9a7c3e;text-transform:uppercase;padding-left:.34em">Мелодія дня</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#46603f;margin:6px 0 0">Наша пісня</h3>
+        </div>
+        <audio id="song-audio" preload="none"></audio>
+        <div style="display:flex;align-items:center;gap:18px;background:linear-gradient(180deg,#fffdf8,#f6efe0);border:1.5px solid #d3bd85;border-radius:16px;padding:16px 20px;box-shadow:0 10px 26px -18px rgba(70,55,20,.4)">
+          <button onClick="{{ togglePlay }}" aria-label="Відтворити" style="flex:none;width:52px;height:52px;border-radius:50%;border:1.5px solid #c2a35f;background:#46603f;color:#f6efe0;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1">{{ playGlyph }}</button>
+          <div style="flex:1;min-width:0">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">
+              <span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;color:#46603f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Пісня наших сердець</span>
+              <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#9a8f70;white-space:nowrap">Лілія &amp; Андрій</span>
+            </div>
+            <div onClick="{{ seek }}" style="margin-top:12px;height:5px;border-radius:3px;background:#e6dcc4;cursor:pointer;position:relative">
+              <div style="{{ barFillStyle }}"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:7px;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.05em;color:#9a8f70">
+              <span>{{ curLabel }}</span><span>{{ durLabel }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GALLERY -->
+      <div style="margin-top:52px">
+        <div style="text-align:center;margin-bottom:20px">
+          <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.34em;font-size:12px;color:#9a7c3e;text-transform:uppercase;padding-left:.34em">Дорогі миті</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#46603f;margin:6px 0 0">Наші світлини</h3>
+        </div>
+        <div class="row g-2 g-md-3">
+          <div class="col-6"><image-slot id="g1" style="width:100%;height:150px" shape="rounded" radius="10" placeholder="Фото"></image-slot></div>
+          <div class="col-6"><image-slot id="g2" style="width:100%;height:150px" shape="rounded" radius="10" placeholder="Фото"></image-slot></div>
+          <div class="col-6"><image-slot id="g3" style="width:100%;height:150px" shape="rounded" radius="10" placeholder="Фото"></image-slot></div>
+          <div class="col-6"><image-slot id="g4" style="width:100%;height:150px" shape="rounded" radius="10" placeholder="Фото"></image-slot></div>
+          <div class="col-6"><image-slot id="g5" style="width:100%;height:150px" shape="rounded" radius="10" placeholder="Фото"></image-slot></div>
+          <div class="col-6"><image-slot id="g6" style="width:100%;height:150px" shape="rounded" radius="10" placeholder="Фото"></image-slot></div>
+          <div class="col-6 mx-auto"><image-slot id="g7" style="width:100%;height:150px" shape="rounded" radius="10" placeholder="Фото"></image-slot></div>
+        </div>
+      </div>
+
+      <!-- footer -->
+      <div style="text-align:center;margin-top:54px">
+        <span style="font-family:'Cormorant Garamond',serif;color:#b1904f;font-size:26px">&#9825;</span>
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:#5b5440;margin:10px 0 0">З любов'ю та вдячністю,</p>
+        <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.2em;font-size:13px;color:#9a7c3e;text-transform:uppercase;margin-top:4px">Наречені</div>
+        <div style="font-family:'Marck Script',cursive;font-size:34px;color:#46603f;margin-top:8px">Лілія та Андрій</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:620,&quot;height&quot;:900},&quot;videoHref&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Медіа&quot;}}">
+class Component extends DCLogic {
+  state = {
+    playing:false, cur:0, dur:204,
+    locked: !(typeof localStorage!=='undefined' && localStorage.getItem('vinch_unlocked')==='1'),
+    err:false, fading:false
+  };
+
+  componentDidMount(){
+    if (this.state.locked){
+      document.body.style.overflow='hidden';
+      setTimeout(()=>{ const i=document.getElementById('date-input'); if(i)i.focus(); },350);
+      setTimeout(()=>{
+        const n=document.getElementById('date-native');
+        if(n && !n._bound){ n._bound=true; n.addEventListener('change',this.onNativePick); }
+      },350);
+    }
+  }
+
+  submit = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    const el = document.getElementById('date-input');
+    const raw = (el ? el.value : '').replace(/\D/g,'');
+    if (raw==='140220' || raw==='14022020'){ this.unlock(); }
+    else { this.setState({err:true}); }
+  };
+
+  clearErr = () => { if (this.state.err) this.setState({err:false}); };
+
+  maskInput = (e) => {
+    const el = e.target;
+    let d = el.value.replace(/\D/g,'').slice(0,6);
+    let out = d.slice(0,2);
+    if (d.length > 2) out += '.' + d.slice(2,4);
+    if (d.length > 4) out += '.' + d.slice(4,6);
+    el.value = out;
+    if (this.state.err) this.setState({err:false});
+  };
+
+  openCalendar = () => {
+    const n = document.getElementById('date-native');
+    if (!n) return;
+    if (this.state.err) this.setState({err:false});
+    if (typeof n.showPicker === 'function') { try { n.showPicker(); return; } catch(_){} }
+    n.focus(); n.click();
+  };
+
+  onNativePick = (e) => {
+    const v = e.target.value; // yyyy-mm-dd
+    if (!v) return;
+    const [y,m,dd] = v.split('-');
+    const el = document.getElementById('date-input');
+    if (el) el.value = dd + '.' + m + '.' + y.slice(2);
+    this.setState({err:false});
+  };
+
+  unlock(){
+    this.setState({err:false});
+    this.startConfetti();
+    setTimeout(()=>this.setState({fading:true}), 700);
+    setTimeout(()=>{
+      this.setState({locked:false});
+      document.body.style.overflow='';
+      try{ localStorage.setItem('vinch_unlocked','1'); }catch(_){}
+    }, 1700);
+    setTimeout(()=>this.stopConfetti(), 4400);
+  }
+
+  startConfetti(){
+    const cv = document.getElementById('confetti-canvas'); if(!cv) return;
+    const ctx = cv.getContext('2d');
+    const dpr = window.devicePixelRatio||1;
+    const resize = () => { cv.width=innerWidth*dpr; cv.height=innerHeight*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); };
+    resize(); this._cresize=resize; window.addEventListener('resize',resize);
+    const colors=['#c2a35f','#46603f','#e8c9d4','#f5efe0','#b1904f','#8a9d6a','#d98fa8'];
+    const P=[];
+    for(let i=0;i<170;i++){
+      P.push({ x:Math.random()*innerWidth, y:-20-Math.random()*innerHeight*0.6, r:4+Math.random()*6,
+        c:colors[i%colors.length], vy:2+Math.random()*3.5, vx:-1.6+Math.random()*3.2,
+        rot:Math.random()*6.28, vr:-0.22+Math.random()*0.44, sh:Math.random()<0.55 });
+    }
+    this._conf={running:true};
+    const start=performance.now();
+    const draw=(t)=>{
+      if(!this._conf||!this._conf.running) return;
+      const el=t-start;
+      ctx.clearRect(0,0,innerWidth,innerHeight);
+      for(const p of P){
+        p.x+=p.vx; p.y+=p.vy; p.rot+=p.vr; p.vy+=0.02; p.vx*=0.995;
+        if(p.y>innerHeight+30){ if(el<2400){ p.y=-20; p.x=Math.random()*innerWidth; } }
+        ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot); ctx.fillStyle=p.c;
+        if(p.sh){ ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*1.7); }
+        else { ctx.beginPath(); ctx.arc(0,0,p.r*0.62,0,6.3); ctx.fill(); }
+        ctx.restore();
+      }
+      this._raf=requestAnimationFrame(draw);
+    };
+    this._raf=requestAnimationFrame(draw);
+  }
+
+  stopConfetti(){
+    if(this._conf) this._conf.running=false;
+    if(this._raf) cancelAnimationFrame(this._raf);
+    if(this._cresize) window.removeEventListener('resize',this._cresize);
+    const cv=document.getElementById('confetti-canvas');
+    if(cv){ const ctx=cv.getContext('2d'); ctx.clearRect(0,0,cv.width,cv.height); }
+  }
+
+  fmt(t){ t=Math.max(0,Math.floor(t)); const m=Math.floor(t/60), s=t%60; return m+':'+String(s).padStart(2,'0'); }
+
+  componentWillUnmount(){ clearInterval(this._t); this.stopConfetti(); }
+
+  togglePlay = () => {
+    const a = document.getElementById('song-audio');
+    if (a && a.src) {
+      if (this.state.playing) { a.pause(); this.setState({playing:false}); }
+      else { a.play().then(()=>{ this.setState({playing:true}); this._bind(a); }).catch(()=>this._sim()); }
+      return;
+    }
+    this._sim();
+  };
+
+  _bind(a){
+    if (this._bound) return; this._bound = true;
+    a.addEventListener('timeupdate',()=>this.setState({cur:a.currentTime, dur:a.duration||this.state.dur}));
+    a.addEventListener('ended',()=>this.setState({playing:false,cur:0}));
+  }
+
+  _sim(){
+    if (this.state.playing){ clearInterval(this._t); this.setState({playing:false}); return; }
+    this.setState({playing:true});
+    this._t = setInterval(()=>{
+      this.setState(s=>{
+        const cur = s.cur + 0.25;
+        if (cur >= s.dur){ clearInterval(this._t); return {cur:0, playing:false}; }
+        return {cur};
+      });
+    },250);
+  }
+
+  seek = (e) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    const ratio = Math.min(1,Math.max(0,(e.clientX-r.left)/r.width));
+    const cur = ratio*this.state.dur;
+    const a = document.getElementById('song-audio');
+    if (a && a.src) a.currentTime = cur;
+    this.setState({cur});
+  };
+
+  renderVals(){
+    const { playing, cur, dur, err, fading } = this.state;
+    const pct = dur ? (cur/dur*100) : 0;
+    return {
+      locked: this.state.locked,
+      err,
+      submit: this.submit,
+      clearErr: this.clearErr,
+      maskInput: this.maskInput,
+      openCalendar: this.openCalendar,
+      onNativePick: this.onNativePick,
+      gateStyle: { position:'fixed', inset:0, zIndex:60, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px', background:'radial-gradient(120% 90% at 50% 0%,#efe7d6 0%,#e4dac6 60%,#ded2ba 100%)', opacity: fading?0:1, transition:'opacity 1s ease' },
+      gateCardStyle: { position:'relative', zIndex:2, width:'460px', maxWidth:'100%', textAlign:'center', background:'rgba(251,246,236,.92)', backdropFilter:'blur(2px)', border:'1.4px solid #c2a35f', borderRadius:'6px', padding:'46px 40px', boxShadow:'0 30px 70px -30px rgba(70,55,20,.5)', animation: err?'shk .5s':'none' },
+      togglePlay: this.togglePlay,
+      seek: this.seek,
+      playGlyph: playing ? '❚❚' : '►',
+      curLabel: this.fmt(cur),
+      durLabel: this.fmt(dur),
+      videoHref: this.props.videoHref ?? '#',
+      barFillStyle: { position:'absolute', left:0, top:0, height:'100%', width:pct+'%', borderRadius:'3px', background:'linear-gradient(90deg,#8a9d6a,#46603f)', transition:'width .12s linear' },
+    };
+  }
+}
+</script>
+</body>
+</html>
