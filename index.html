@@ -3,7 +3,7 @@
 <head>
   <title>Вітаємо Андрія та Лілю!</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <script src="./support.js"></script>
 </head>
@@ -23,9 +23,27 @@
     image-slot{--is-bg:#f0e9d9}
     ::selection{background:#dfcfa0}
     @keyframes shk{0%,100%{transform:translateX(0)}18%{transform:translateX(-9px)}36%{transform:translateX(8px)}54%{transform:translateX(-6px)}72%{transform:translateX(4px)}88%{transform:translateX(-2px)}}
+
+    @media screen and (max-width: 767px) {
+      .top-name {
+        margin-top: 99px;
+      }
+
+      .bottom-name {
+        margin-bottom: 99px;
+      }
+
+      .content {
+        padding: 0!important;
+      }
+
+      .name {
+        font-size: 45px !important;
+      }
+    }
   </style>
 </helmet>
-<div style="min-height:100vh;display:flex;justify-content:center;padding:44px 18px 60px;font-family:'PT Serif',Georgia,serif">
+<div class="content" style="min-height:100vh;display:flex;justify-content:center;padding:44px 18px 60px;font-family:'PT Serif',Georgia,serif">
 
   <canvas id="confetti-canvas" style="position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:70"></canvas>
 
@@ -89,7 +107,7 @@
     <div style="position:relative;z-index:4;padding:60px 52px 64px">
 
       <!-- header -->
-      <div style="text-align:center">
+      <div class="top-name" style="text-align:center">
         <svg width="66" height="46" viewBox="0 0 116 80" style="display:block;margin:0 auto 16px" aria-hidden="true">
           <defs>
             <linearGradient id="ringHdr" x1="0" y1="0" x2="0" y2="1">
@@ -115,7 +133,7 @@
 
       <!-- names -->
       <div style="text-align:center;margin-top:28px">
-        <div style="font-family:'Marck Script',cursive;font-size:52px;line-height:1.05;color:#46603f">Лілія<span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;color:#b1904f;margin:0 12px;vertical-align:6px">та</span>Андрій</div>
+        <div class="name" style="font-family:'Marck Script',cursive;font-size:52px;line-height:1.05;color:#46603f">Лілія<span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;color:#b1904f;margin:0 12px;vertical-align:6px">та</span>Андрій</div>
         <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin:18px auto 0">
           <span style="width:52px;height:1px;background:linear-gradient(90deg,transparent,#c3a869)"></span>
           <span style="width:7px;height:7px;transform:rotate(45deg);border:1px solid #b1904f;display:inline-block"></span>
@@ -209,7 +227,7 @@
         <span style="font-family:'Cormorant Garamond',serif;color:#b1904f;font-size:26px">&#9825;</span>
         <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:#5b5440;margin:10px 0 0">З любов'ю та вдячністю,</p>
         <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.2em;font-size:13px;color:#9a7c3e;text-transform:uppercase;margin-top:4px">Наречені</div>
-        <div style="font-family:'Marck Script',cursive;font-size:34px;color:#46603f;margin-top:8px">Лілія та Андрій</div>
+        <div class="bottom-name" style="font-family:'Marck Script',cursive;font-size:34px;color:#46603f;margin-top:8px">Лілія та Андрій</div>
       </div>
 
     </div>
