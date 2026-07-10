@@ -1,411 +1,607 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Вітаємо Андрія та Лілю!</title>
   <meta charset="utf-8">
+  <title>Вітаємо Андрія та Лілю!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
-<helmet>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Marck+Script&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="assets/image-slot.js"></script>
-  <style>
-    *{box-sizing:border-box}
-    body{margin:0;background:radial-gradient(120% 90% at 50% 0%,#efe7d6 0%,#e4dac6 60%,#ded2ba 100%);min-height:100vh}
-    a{color:#8a6d34;text-decoration:none}
-    a:hover{color:#b1904f}
-    image-slot{--is-bg:#f0e9d9}
-    ::selection{background:#dfcfa0}
-    @keyframes shk{0%,100%{transform:translateX(0)}18%{transform:translateX(-9px)}36%{transform:translateX(8px)}54%{transform:translateX(-6px)}72%{transform:translateX(4px)}88%{transform:translateX(-2px)}}
+  <helmet>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Marck+Script&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="assets/image-slot.js"></script>
+    <style>
+      *{box-sizing:border-box}
+      body{margin:0;background:radial-gradient(120% 90% at 50% 0%,#efe7d6 0%,#e4dac6 60%,#ded2ba 100%);min-height:100vh}
+      a{color:#8a6d34;text-decoration:none}
+      a:hover{color:#b1904f}
+      image-slot{--is-bg:#f0e9d9}
+      ::selection{background:#dfcfa0}
+      @keyframes shk{0%,100%{transform:translateX(0)}18%{transform:translateX(-9px)}36%{transform:translateX(8px)}54%{transform:translateX(-6px)}72%{transform:translateX(4px)}88%{transform:translateX(-2px)}}
 
-    @media screen and (max-width: 767px) {
-      .top-name {
-        margin-top: 99px;
+      @media screen and (max-width: 767px) {
+        .top-name {
+          margin-top: 99px;
+        }
+
+        .bottom-name {
+          margin-bottom: 99px;
+        }
+
+        .content {
+          padding: 0!important;
+        }
+
+        .name {
+          font-size: 45px !important;
+        }
       }
+    </style>
+  </helmet>
+  <div class="content" style="min-height:100vh;display:flex;justify-content:center;padding:44px 18px 60px;font-family:'PT Serif',Georgia,serif">
 
-      .bottom-name {
-        margin-bottom: 99px;
-      }
+    <canvas id="confetti-canvas" style="position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:70"></canvas>
 
-      .content {
-        padding: 0!important;
-      }
+    <sc-if value="{{ locked }}" hint-placeholder-val="{{ true }}">
+      <div style="{{ gateStyle }}">
+        <img src="assets/fl-tl.png" alt="" style="position:fixed;top:0;left:0;width:26vw;max-width:230px;pointer-events:none">
+        <img src="assets/fl-tr.png" alt="" style="position:fixed;top:0;right:0;width:27vw;max-width:240px;pointer-events:none">
+        <img src="assets/fl-bl.png" alt="" style="position:fixed;bottom:0;left:0;width:26vw;max-width:230px;pointer-events:none">
+        <img src="assets/fl-br.png" alt="" style="position:fixed;bottom:0;right:0;width:27vw;max-width:235px;pointer-events:none">
+        <div style="{{ gateCardStyle }}">
+          <svg width="60" height="42" viewBox="0 0 116 80" style="display:block;margin:0 auto 14px" aria-hidden="true">
+            <defs>
+              <linearGradient id="ringGate" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#e6cd88"></stop>
+                <stop offset=".5" stop-color="#b1904f"></stop>
+                <stop offset="1" stop-color="#8a6d34"></stop>
+              </linearGradient>
+            </defs>
+            <ellipse cx="76" cy="50" rx="26" ry="27" fill="none" stroke="url(#ringGate)" stroke-width="6"></ellipse>
+            <ellipse cx="44" cy="50" rx="26" ry="27" fill="none" stroke="url(#ringGate)" stroke-width="6"></ellipse>
+            <g transform="translate(76,17)">
+              <path d="M0 -11 L9 -1 L0 13 L-9 -1 Z" fill="#f4e7b6" stroke="#b1904f" stroke-width="1.8" stroke-linejoin="round"></path>
+              <path d="M-9 -1 L9 -1 M-4.5 -6 L0 -1 L4.5 -6 M0 -1 L0 13" stroke="#c9ad63" stroke-width="1" fill="none"></path>
+            </g>
+          </svg>
+          <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.34em;font-size:12px;color:#9a7c3e;text-transform:uppercase;padding-left:.34em">Таїнство вінчання</div>
+          <div style="font-family:'Marck Script',cursive;font-size:30px;color:#b1904f;margin:4px 0 0">Ліля та Андрій</div>
+          <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:30px;color:#46603f;margin:12px 0 0;letter-spacing:.04em">Щиро вітаємо з Весіллям!</h2>
 
-      .name {
-        font-size: 45px !important;
-      }
-    }
-  </style>
-</helmet>
-<div class="content" style="min-height:100vh;display:flex;justify-content:center;padding:44px 18px 60px;font-family:'PT Serif',Georgia,serif">
+          <p style="font-size:15px;line-height:1.7;color:#5b5440;margin:20px auto 0;max-width:330px">Ця сторінка створена з любов'ю. Щоб відкрити її, введіть дату, коли вас звела доля.</p>
+          <form onSubmit="{{ submit }}" style="margin-top:26px;display:flex;flex-direction:column;align-items:center;gap:14px">
+            <div style="position:relative;display:flex;align-items:center;width:240px;max-width:100%">
+              <input id="date-input" type="text" inputmode="numeric" autocomplete="off" placeholder="дд.мм.рр" maxlength="8" onFocus="{{ clearErr }}" onInput="{{ maskInput }}" onDblClick="{{ openCalendar }}" style="width:100%;text-align:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:23px;letter-spacing:.14em;color:#46603f;background:#fffdf8;border:1.4px solid #c2a35f;border-radius:10px;padding:12px 44px 12px 14px;outline:none">
+              <button type="button" onClick="{{ openCalendar }}" aria-label="Відкрити календар" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:transparent;border:none;cursor:pointer;padding:0">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9a7c3e" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"></rect><path d="M3 9h18M8 2.5v4M16 2.5v4"></path><circle cx="8" cy="13" r="1.1" fill="#9a7c3e" stroke="none"></circle><circle cx="12" cy="13" r="1.1" fill="#9a7c3e" stroke="none"></circle><circle cx="16" cy="13" r="1.1" fill="#9a7c3e" stroke="none"></circle><circle cx="8" cy="17" r="1.1" fill="#9a7c3e" stroke="none"></circle><circle cx="12" cy="17" r="1.1" fill="#9a7c3e" stroke="none"></circle></svg>
+              </button>
+              <input id="date-native" type="date" min="1950-01-01" max="2035-12-31" onChange="{{ onNativePick }}" style="position:absolute;right:8px;bottom:-2px;width:1px;height:1px;opacity:0;pointer-events:none">
+            </div>
+            <button type="submit" style="font-family:'Cormorant Garamond',serif;letter-spacing:.16em;text-transform:uppercase;font-size:14px;font-weight:600;color:#f6efe0;background:#46603f;border:1.4px solid #3a5236;border-radius:30px;padding:13px 36px;cursor:pointer">Відкрити &#9825;</button>
+          </form>
+          <sc-if value="{{ err }}" hint-placeholder-val="{{ false }}">
+            <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#b0553f;margin-top:14px">Дата не збігається — спробуйте ще раз</div>
+          </sc-if>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:12.5px;color:#a99f80;margin-top:18px;letter-spacing:.03em">Підказка: день усіх закоханих &#9825;</div>
+        </div>
+      </div>
+    </sc-if>
 
-  <canvas id="confetti-canvas" style="position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:70"></canvas>
+    <div style="position:relative;width:620px;max-width:100%;background:linear-gradient(180deg,#fbf6ec 0%,#f9f3e6 100%);box-shadow:0 30px 70px -30px rgba(70,55,20,.4),0 2px 8px rgba(70,55,20,.12);overflow:hidden">
 
-  <sc-if value="{{ locked }}" hint-placeholder-val="{{ true }}">
-    <div style="{{ gateStyle }}">
-      <img src="assets/fl-tl.png" alt="" style="position:fixed;top:0;left:0;width:26vw;max-width:230px;pointer-events:none">
-      <img src="assets/fl-tr.png" alt="" style="position:fixed;top:0;right:0;width:27vw;max-width:240px;pointer-events:none">
-      <img src="assets/fl-bl.png" alt="" style="position:fixed;bottom:0;left:0;width:26vw;max-width:230px;pointer-events:none">
-      <img src="assets/fl-br.png" alt="" style="position:fixed;bottom:0;right:0;width:27vw;max-width:235px;pointer-events:none">
-      <div style="{{ gateCardStyle }}">
-        <svg width="60" height="42" viewBox="0 0 116 80" style="display:block;margin:0 auto 14px" aria-hidden="true">
-          <defs>
-            <linearGradient id="ringGate" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#e6cd88"></stop>
-              <stop offset=".5" stop-color="#b1904f"></stop>
-              <stop offset="1" stop-color="#8a6d34"></stop>
-            </linearGradient>
-          </defs>
-          <ellipse cx="76" cy="50" rx="26" ry="27" fill="none" stroke="url(#ringGate)" stroke-width="6"></ellipse>
-          <ellipse cx="44" cy="50" rx="26" ry="27" fill="none" stroke="url(#ringGate)" stroke-width="6"></ellipse>
-          <g transform="translate(76,17)">
-            <path d="M0 -11 L9 -1 L0 13 L-9 -1 Z" fill="#f4e7b6" stroke="#b1904f" stroke-width="1.8" stroke-linejoin="round"></path>
-            <path d="M-9 -1 L9 -1 M-4.5 -6 L0 -1 L4.5 -6 M0 -1 L0 13" stroke="#c9ad63" stroke-width="1" fill="none"></path>
-          </g>
-        </svg>
-        <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.34em;font-size:12px;color:#9a7c3e;text-transform:uppercase;padding-left:.34em">Наше запрошення</div>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:30px;color:#46603f;margin:12px 0 0;letter-spacing:.04em">Ласкаво просимо</h2>
-        <div style="font-family:'Marck Script',cursive;font-size:30px;color:#b1904f;margin:4px 0 0">Лілія та Андрій</div>
-        <p style="font-size:15px;line-height:1.7;color:#5b5440;margin:20px auto 0;max-width:330px">Ця сторінка створена з любов'ю. Щоб відкрити її, введіть дату, коли нас звела доля.</p>
-        <form onSubmit="{{ submit }}" style="margin-top:26px;display:flex;flex-direction:column;align-items:center;gap:14px">
-          <div style="position:relative;display:flex;align-items:center;width:240px;max-width:100%">
-            <input id="date-input" type="text" inputmode="numeric" autocomplete="off" placeholder="дд.мм.рр" maxlength="8" onFocus="{{ clearErr }}" onInput="{{ maskInput }}" onDblClick="{{ openCalendar }}" style="width:100%;text-align:center;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:23px;letter-spacing:.14em;color:#46603f;background:#fffdf8;border:1.4px solid #c2a35f;border-radius:10px;padding:12px 44px 12px 14px;outline:none">
-            <button type="button" onClick="{{ openCalendar }}" aria-label="Відкрити календар" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:transparent;border:none;cursor:pointer;padding:0">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9a7c3e" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"></rect><path d="M3 9h18M8 2.5v4M16 2.5v4"></path><circle cx="8" cy="13" r="1.1" fill="#9a7c3e" stroke="none"></circle><circle cx="12" cy="13" r="1.1" fill="#9a7c3e" stroke="none"></circle><circle cx="16" cy="13" r="1.1" fill="#9a7c3e" stroke="none"></circle><circle cx="8" cy="17" r="1.1" fill="#9a7c3e" stroke="none"></circle><circle cx="12" cy="17" r="1.1" fill="#9a7c3e" stroke="none"></circle></svg>
+      <div style="position:absolute;inset:15px;border:1.4px solid #c2a35f;pointer-events:none;z-index:1"></div>
+      <div style="position:absolute;inset:21px;border:.7px solid #d3bd85;pointer-events:none;z-index:1"></div>
+
+      <img src="assets/fl-tl.png" alt="" style="position:absolute;top:-6px;left:-6px;width:200px;z-index:3;pointer-events:none">
+      <img src="assets/fl-tr.png" alt="" style="position:absolute;top:-6px;right:-6px;width:210px;z-index:3;pointer-events:none">
+      <img src="assets/fl-bl.png" alt="" style="position:absolute;bottom:-6px;left:-6px;width:200px;z-index:3;pointer-events:none">
+      <img src="assets/fl-br.png" alt="" style="position:absolute;bottom:-6px;right:-6px;width:205px;z-index:3;pointer-events:none">
+
+      <div style="position:relative;z-index:4;padding:60px 52px 64px">
+
+        <div class="top-name" style="text-align:center">
+          <svg width="66" height="46" viewBox="0 0 116 80" style="display:block;margin:0 auto 16px" aria-hidden="true">
+            <defs>
+              <linearGradient id="ringHdr" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#e6cd88"></stop>
+                <stop offset=".5" stop-color="#b1904f"></stop>
+                <stop offset="1" stop-color="#8a6d34"></stop>
+              </linearGradient>
+            </defs>
+            <ellipse cx="76" cy="50" rx="26" ry="27" fill="none" stroke="url(#ringHdr)" stroke-width="6"></ellipse>
+            <ellipse cx="44" cy="50" rx="26" ry="27" fill="none" stroke="url(#ringHdr)" stroke-width="6"></ellipse>
+            <g transform="translate(76,17)">
+              <path d="M0 -11 L9 -1 L0 13 L-9 -1 Z" fill="#f4e7b6" stroke="#b1904f" stroke-width="1.8" stroke-linejoin="round"></path>
+              <path d="M-9 -1 L9 -1 M-4.5 -6 L0 -1 L4.5 -6 M0 -1 L0 13" stroke="#c9ad63" stroke-width="1" fill="none"></path>
+            </g>
+          </svg>
+          <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.42em;font-size:14px;font-weight:600;color:#9a7c3e;text-transform:uppercase;padding-left:.42em">Таїнство Вінчання</div>
+        </div>
+
+        <div style="width:300px;max-width:78%;margin:30px auto 0;height:392px;border-radius:150px 150px 12px 12px;overflow:hidden;border:1.5px solid #c2a35f;box-shadow:0 16px 34px -18px rgba(70,55,20,.5);background:#f0e9d9">
+          {{ mainPhotoImg }}
+        </div>
+
+        <div style="text-align:center;margin-top:28px">
+          <div class="name" style="font-family:'Marck Script',cursive;font-size:52px;line-height:1.05;color:#46603f">Лілія<span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;color:#b1904f;margin:0 12px;vertical-align:6px">та</span>Андрій</div>
+          <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin:18px auto 0">
+            <span style="width:52px;height:1px;background:linear-gradient(90deg,transparent,#c3a869)"></span>
+            <span style="width:7px;height:7px;transform:rotate(45deg);border:1px solid #b1904f;display:inline-block"></span>
+            <span style="width:52px;height:1px;background:linear-gradient(90deg,#c3a869,transparent)"></span>
+          </div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;letter-spacing:.16em;font-size:19px;color:#46603f;margin-top:16px;text-transform:uppercase">11 липня 2026</div>
+          <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.24em;font-size:12.5px;color:#8a836b;margin-top:5px;text-transform:uppercase">Мюнхен · Німеччина</div>
+        </div>
+
+        <div style="text-align:center;margin-top:42px">
+          <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;letter-spacing:.14em;font-size:26px;color:#46603f;margin:0 0 18px;text-transform:uppercase">Щиро вітаємо з Весіллям!</h2>
+          <p style="font-size:16px;line-height:1.85;color:#5b5440;margin:0 auto;max-width:420px">Нехай усе найкраще у вашому житті починається зі слова «разом». Любіть, підтримуйте, смійтеся, мрійте й бережіть той вогник, який сьогодні так яскраво світиться у ваших очах. Щастя та любові вам на все життя!</p>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin:40px auto">
+          <span style="width:70px;height:1px;background:linear-gradient(90deg,transparent,#c3a869)"></span>
+          <span style="font-family:'Cormorant Garamond',serif;color:#b1904f;font-size:20px">&#10086;</span>
+          <span style="width:70px;height:1px;background:linear-gradient(90deg,#c3a869,transparent)"></span>
+        </div>
+
+        <blockquote style="text-align:center;margin:0 auto;max-width:400px">
+          <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:23px;line-height:1.5;color:#46603f;margin:0">«Любов ніколи не перестає, вона все зносить, усьому вірить, на все сподівається, все терпить.»</p>
+          <cite style="display:block;font-family:'Cormorant Garamond',serif;font-style:normal;letter-spacing:.2em;font-size:12px;color:#9a7c3e;margin-top:16px;text-transform:uppercase">1 Кор. 13</cite>
+        </blockquote>
+
+        <div style="margin-top:52px">
+          <div style="text-align:center;margin-bottom:20px">
+            <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.34em;font-size:12px;color:#9a7c3e;text-transform:uppercase;padding-left:.34em">Наша історія</div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#46603f;margin:6px 0 0">Відео</h3>
+          </div>
+          <div class="row g-3 justify-content-center">
+            <sc-if value="{{ video1Has }}" hint-placeholder-val="{{ true }}">
+              <div class="{{ videoColClass }}">
+                <div onClick="{{ video1Open }}" style="position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;border:1.5px solid #c2a35f;box-shadow:0 14px 30px -18px rgba(70,55,20,.45);background:#1a160c;cursor:pointer">
+                  {{ video1ThumbImg }}
+                  <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(26,22,12,.18)">
+                  <span style="width:66px;height:66px;border-radius:50%;background:rgba(251,246,236,.92);box-shadow:0 6px 20px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;border:1px solid #c2a35f">
+                    <span style="width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:19px solid #b1904f;margin-left:5px"></span>
+                  </span>
+                </span>
+                </div>
+                <div style="text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#8a836b;margin-top:10px">{{ video1Label }}</div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ video2Has }}" hint-placeholder-val="{{ false }}">
+              <div class="{{ videoColClass }}">
+                <div onClick="{{ video2Open }}" style="position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;border:1.5px solid #c2a35f;box-shadow:0 14px 30px -18px rgba(70,55,20,.45);background:#1a160c;cursor:pointer">
+                  {{ video2ThumbImg }}
+                  <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(26,22,12,.18)">
+                  <span style="width:66px;height:66px;border-radius:50%;background:rgba(251,246,236,.92);box-shadow:0 6px 20px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;border:1px solid #c2a35f">
+                    <span style="width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:19px solid #b1904f;margin-left:5px"></span>
+                  </span>
+                </span>
+                </div>
+                <div style="text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#8a836b;margin-top:10px">{{ video2Label }}</div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+
+        <div style="margin-top:52px">
+          <div style="text-align:center;margin-bottom:20px">
+            <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.34em;font-size:12px;color:#9a7c3e;text-transform:uppercase;padding-left:.34em">Мелодія дня</div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#46603f;margin:6px 0 0">Наша пісня</h3>
+          </div>
+          <audio id="song-audio" src="/assets/music.mp3" preload="none"></audio>
+          <div style="display:flex;align-items:center;gap:18px;background:linear-gradient(180deg,#fffdf8,#f6efe0);border:1.5px solid #d3bd85;border-radius:16px;padding:16px 20px;box-shadow:0 10px 26px -18px rgba(70,55,20,.4)">
+            <button onClick="{{ togglePlay }}" aria-label="Відтворити" style="flex:none;width:52px;height:52px;border-radius:50%;border:1.5px solid #c2a35f;background:#46603f;color:#f6efe0;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1">{{ playGlyph }}</button>
+            <div style="flex:1;min-width:0">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">
+                <span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;color:#46603f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Пісня наших сердець</span>
+                <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#9a8f70;white-space:nowrap">Лілія &amp; Андрій</span>
+              </div>
+              <div onClick="{{ seek }}" style="margin-top:12px;height:5px;border-radius:3px;background:#e6dcc4;cursor:pointer;position:relative">
+                <div style="{{ barFillStyle }}"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;margin-top:7px;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.05em;color:#9a8f70">
+                <span>{{ curLabel }}</span><span>{{ durLabel }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:52px">
+          <div style="text-align:center;margin-bottom:20px">
+            <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.34em;font-size:12px;color:#9a7c3e;text-transform:uppercase;padding-left:.34em">Дорогі миті</div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#46603f;margin:6px 0 0">Наші світлини</h3>
+          </div>
+          <div class="row g-2 g-md-3">
+            <div class="col-6">{{ photo1Img }}</div>
+            <div class="col-6">{{ photo2Img }}</div>
+            <div class="col-6">{{ photo3Img }}</div>
+            <div class="col-6">{{ photo4Img }}</div>
+            <div class="col-6">{{ photo5Img }}</div>
+            <div class="col-6">{{ photo6Img }}</div>
+            <div class="col-6 mx-auto">{{ photo7Img }}</div>
+          </div>
+          <div style="display:flex;justify-content:center;margin-top:22px">
+            <button onClick="{{ downloadAll }}" style="display:inline-flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;letter-spacing:.14em;text-transform:uppercase;font-size:13px;font-weight:600;color:#46603f;background:#fffdf8;border:1.4px solid #c2a35f;border-radius:30px;padding:12px 28px;cursor:pointer;box-shadow:0 8px 20px -14px rgba(70,55,20,.5)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a7c3e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5"></path><path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"></path></svg>
+              Завантажити всі
             </button>
-            <input id="date-native" type="date" min="1950-01-01" max="2035-12-31" onChange="{{ onNativePick }}" style="position:absolute;right:8px;bottom:-2px;width:1px;height:1px;opacity:0;pointer-events:none">
           </div>
-          <button type="submit" style="font-family:'Cormorant Garamond',serif;letter-spacing:.16em;text-transform:uppercase;font-size:14px;font-weight:600;color:#f6efe0;background:#46603f;border:1.4px solid #3a5236;border-radius:30px;padding:13px 36px;cursor:pointer">Відкрити &#9825;</button>
-        </form>
-        <sc-if value="{{ err }}" hint-placeholder-val="{{ false }}">
-          <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#b0553f;margin-top:14px">Дата не збігається — спробуйте ще раз</div>
+        </div>
+
+        <div style="text-align:center;margin-top:54px">
+          <span style="font-family:'Cormorant Garamond',serif;color:#b1904f;font-size:26px">&#9825;</span>
+          <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:#5b5440;margin:10px 0 0">З любов'ю та вдячністю,</p>
+          <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.2em;font-size:13px;color:#9a7c3e;text-transform:uppercase;margin-top:4px">Наречені</div>
+          <div class="bottom-name" style="font-family:'Marck Script',cursive;font-size:34px;color:#46603f;margin-top:8px">Лілія та Андрій</div>
+        </div>
+
+      </div>
+    </div>
+
+    <sc-if value="{{ videoOpen }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ closeVideo }}" style="position:fixed;inset:0;z-index:80;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(38,30,14,.9);backdrop-filter:blur(4px)">
+        <button onClick="{{ closeVideo }}" aria-label="Закрити" style="position:absolute;top:18px;right:22px;width:46px;height:46px;border-radius:50%;background:rgba(251,246,236,.14);border:1px solid rgba(251,246,236,.4);color:#f6efe0;font-size:24px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center">&#215;</button>
+        <div onClick="{{ stopProp }}" style="width:min(1100px,100%);max-height:88vh;display:flex;flex-direction:column;align-items:center;gap:12px">
+          <div style="width:100%;aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;box-shadow:0 30px 80px -20px rgba(0,0,0,.7);border:1.5px solid #c2a35f">
+            <sc-if value="{{ videoEmbed }}" hint-placeholder-val="{{ false }}">
+              <iframe src="{{ videoEmbed }}" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" style="width:100%;height:100%;border:0;display:block"></iframe>
+            </sc-if>
+            <sc-if value="{{ videoEmpty }}" hint-placeholder-val="{{ false }}">
+              <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:linear-gradient(180deg,#2a2416,#1a160c);text-align:center;padding:30px">
+                <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#c2a35f" stroke-width="1.4"><rect x="2" y="4.5" width="20" height="15" rx="2.5"></rect><path d="M10 9l5 3-5 3z" fill="#c2a35f" stroke="none"></path></svg>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#f0e6cf">Відео буде додано незабаром</div>
+                <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#b8ac8c">Вставте посилання на відео в налаштуваннях</div>
+              </div>
+            </sc-if>
+          </div>
+          <sc-if value="{{ videoWatchUrl }}" hint-placeholder-val="{{ false }}">
+            <a href="{{ videoWatchUrl }}" target="_blank" rel="noopener" style="font-family:'Cormorant Garamond',serif;letter-spacing:.1em;font-size:13px;color:#e8dcc0;text-decoration:none;display:inline-flex;align-items:center;gap:7px">
+              <svg width="18" height="13" viewBox="0 0 24 17" fill="#f6efe0"><path d="M23.5 2.7a3 3 0 0 0-2.1-2.1C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31 31 0 0 0 0 8.5a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-5.8 31 31 0 0 0-.5-5.8Z" fill="#c0392b"></path><path d="M9.6 12.1 15.8 8.5 9.6 4.9Z" fill="#fff"></path></svg>
+              Якщо відео не відкрилось — дивитись на YouTube
+            </a>
+          </sc-if>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ lbClose }}" style="position:fixed;inset:0;z-index:85;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(28,22,10,.93);backdrop-filter:blur(4px)">
+        <button onClick="{{ lbClose }}" aria-label="Закрити" style="position:absolute;top:18px;right:22px;width:46px;height:46px;border-radius:50%;background:rgba(251,246,236,.14);border:1px solid rgba(251,246,236,.4);color:#f6efe0;font-size:24px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2">&#215;</button>
+        <sc-if value="{{ lbMulti }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ lbPrev }}" aria-label="Попереднє" style="position:absolute;left:18px;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;background:rgba(251,246,236,.14);border:1px solid rgba(251,246,236,.4);color:#f6efe0;font-size:26px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2">&#8249;</button>
+          <button onClick="{{ lbNext }}" aria-label="Наступне" style="position:absolute;right:18px;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;background:rgba(251,246,236,.14);border:1px solid rgba(251,246,236,.4);color:#f6efe0;font-size:26px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2">&#8250;</button>
         </sc-if>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:12.5px;color:#a99f80;margin-top:18px;letter-spacing:.03em">Підказка: день усіх закоханих &#9825;</div>
+        <img onClick="{{ stopProp }}" src="{{ lbSrc }}" alt="Світлина" style="max-width:min(1000px,92vw);max-height:84vh;object-fit:contain;border-radius:10px;box-shadow:0 30px 80px -20px rgba(0,0,0,.7);border:2px solid #c2a35f;background:#000">
+        <div style="position:absolute;bottom:24px;left:0;right:0;text-align:center;font-family:'Cormorant Garamond',serif;letter-spacing:.18em;font-size:14px;color:#e8dcc0;pointer-events:none">{{ lbCounter }}</div>
       </div>
-    </div>
-  </sc-if>
-
-  <div style="position:relative;width:620px;max-width:100%;background:linear-gradient(180deg,#fbf6ec 0%,#f9f3e6 100%);box-shadow:0 30px 70px -30px rgba(70,55,20,.4),0 2px 8px rgba(70,55,20,.12);overflow:hidden">
-
-    <!-- gold frame -->
-    <div style="position:absolute;inset:15px;border:1.4px solid #c2a35f;pointer-events:none;z-index:1"></div>
-    <div style="position:absolute;inset:21px;border:.7px solid #d3bd85;pointer-events:none;z-index:1"></div>
-
-    <!-- floral corners -->
-    <img src="assets/fl-tl.png" alt="" style="position:absolute;top:-6px;left:-6px;width:200px;z-index:3;pointer-events:none">
-    <img src="assets/fl-tr.png" alt="" style="position:absolute;top:-6px;right:-6px;width:210px;z-index:3;pointer-events:none">
-    <img src="assets/fl-bl.png" alt="" style="position:absolute;bottom:-6px;left:-6px;width:200px;z-index:3;pointer-events:none">
-    <img src="assets/fl-br.png" alt="" style="position:absolute;bottom:-6px;right:-6px;width:205px;z-index:3;pointer-events:none">
-
-    <!-- content -->
-    <div style="position:relative;z-index:4;padding:60px 52px 64px">
-
-      <!-- header -->
-      <div class="top-name" style="text-align:center">
-        <svg width="66" height="46" viewBox="0 0 116 80" style="display:block;margin:0 auto 16px" aria-hidden="true">
-          <defs>
-            <linearGradient id="ringHdr" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#e6cd88"></stop>
-              <stop offset=".5" stop-color="#b1904f"></stop>
-              <stop offset="1" stop-color="#8a6d34"></stop>
-            </linearGradient>
-          </defs>
-          <ellipse cx="76" cy="50" rx="26" ry="27" fill="none" stroke="url(#ringHdr)" stroke-width="6"></ellipse>
-          <ellipse cx="44" cy="50" rx="26" ry="27" fill="none" stroke="url(#ringHdr)" stroke-width="6"></ellipse>
-          <g transform="translate(76,17)">
-            <path d="M0 -11 L9 -1 L0 13 L-9 -1 Z" fill="#f4e7b6" stroke="#b1904f" stroke-width="1.8" stroke-linejoin="round"></path>
-            <path d="M-9 -1 L9 -1 M-4.5 -6 L0 -1 L4.5 -6 M0 -1 L0 13" stroke="#c9ad63" stroke-width="1" fill="none"></path>
-          </g>
-        </svg>
-        <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.42em;font-size:14px;font-weight:600;color:#9a7c3e;text-transform:uppercase;padding-left:.42em">Таїнство Вінчання</div>
-      </div>
-
-      <!-- main photo (arch) -->
-      <div style="width:300px;max-width:78%;margin:30px auto 0;height:392px;border-radius:150px 150px 12px 12px;overflow:hidden;border:1.5px solid #c2a35f;box-shadow:0 16px 34px -18px rgba(70,55,20,.5);background:#f0e9d9">
-        <image-slot id="main-photo" style="width:100%;height:100%" shape="rect" placeholder="Головне фото пари"></image-slot>
-      </div>
-
-      <!-- names -->
-      <div style="text-align:center;margin-top:28px">
-        <div class="name" style="font-family:'Marck Script',cursive;font-size:52px;line-height:1.05;color:#46603f">Лілія<span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;color:#b1904f;margin:0 12px;vertical-align:6px">та</span>Андрій</div>
-        <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin:18px auto 0">
-          <span style="width:52px;height:1px;background:linear-gradient(90deg,transparent,#c3a869)"></span>
-          <span style="width:7px;height:7px;transform:rotate(45deg);border:1px solid #b1904f;display:inline-block"></span>
-          <span style="width:52px;height:1px;background:linear-gradient(90deg,#c3a869,transparent)"></span>
-        </div>
-        <div style="font-family:'Cormorant Garamond',serif;font-weight:600;letter-spacing:.16em;font-size:19px;color:#46603f;margin-top:16px;text-transform:uppercase">11 липня 2026</div>
-        <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.24em;font-size:12.5px;color:#8a836b;margin-top:5px;text-transform:uppercase">Мюнхен · Німеччина</div>
-      </div>
-
-      <!-- greeting -->
-      <div style="text-align:center;margin-top:42px">
-        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;letter-spacing:.14em;font-size:26px;color:#46603f;margin:0 0 18px;text-transform:uppercase">Шановні гості!</h2>
-        <p style="font-size:16px;line-height:1.85;color:#5b5440;margin:0 auto;max-width:420px">З великою радістю запрошуємо вас розділити з нами особливу та хвилюючу подію — <span style="font-style:italic;color:#46603f">Таїнство Вінчання</span>.</p>
-        <p style="font-size:16px;line-height:1.85;color:#5b5440;margin:20px auto 0;max-width:420px">Для нас буде великою честю та щастям бачити вас поруч у цей світлий день, коли ми перед Богом поєднаємо свої серця та долі.</p>
-        <p style="font-size:16px;line-height:1.85;color:#5b5440;margin:20px auto 0;max-width:420px">Нехай спільна молитва, щирі побажання та теплі обійми рідних і друзів зроблять цей день незабутнім.</p>
-      </div>
-
-      <!-- ornament -->
-      <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin:40px auto">
-        <span style="width:70px;height:1px;background:linear-gradient(90deg,transparent,#c3a869)"></span>
-        <span style="font-family:'Cormorant Garamond',serif;color:#b1904f;font-size:20px">&#10086;</span>
-        <span style="width:70px;height:1px;background:linear-gradient(90deg,#c3a869,transparent)"></span>
-      </div>
-
-      <!-- quote -->
-      <blockquote style="text-align:center;margin:0 auto;max-width:400px">
-        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:23px;line-height:1.5;color:#46603f;margin:0">«Любов ніколи не перестає, вона все зносить, усьому вірить, на все сподівається, все терпить.»</p>
-        <cite style="display:block;font-family:'Cormorant Garamond',serif;font-style:normal;letter-spacing:.2em;font-size:12px;color:#9a7c3e;margin-top:16px;text-transform:uppercase">1 Кор. 13</cite>
-      </blockquote>
-
-      <!-- VIDEO -->
-      <div style="margin-top:52px">
-        <div style="text-align:center;margin-bottom:20px">
-          <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.34em;font-size:12px;color:#9a7c3e;text-transform:uppercase;padding-left:.34em">Наша історія</div>
-          <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#46603f;margin:6px 0 0">Відео</h3>
-        </div>
-        <div style="position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;border:1.5px solid #c2a35f;box-shadow:0 14px 30px -18px rgba(70,55,20,.45);background:#ece4d2">
-          <image-slot id="video-poster" style="width:100%;height:100%" shape="rect" placeholder="Постер відео"></image-slot>
-          <a href="{{ videoHref }}" target="_blank" rel="noopener" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
-            <span style="width:66px;height:66px;border-radius:50%;background:rgba(251,246,236,.9);box-shadow:0 6px 18px rgba(70,55,20,.3);display:flex;align-items:center;justify-content:center;border:1px solid #c2a35f">
-              <span style="width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:19px solid #b1904f;margin-left:5px"></span>
-            </span>
-          </a>
-        </div>
-        <div style="text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#8a836b;margin-top:12px">Натисніть, щоб переглянути наше відео</div>
-      </div>
-
-      <!-- SONG -->
-      <div style="margin-top:52px">
-        <div style="text-align:center;margin-bottom:20px">
-          <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.34em;font-size:12px;color:#9a7c3e;text-transform:uppercase;padding-left:.34em">Мелодія дня</div>
-          <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#46603f;margin:6px 0 0">Наша пісня</h3>
-        </div>
-        <audio id="song-audio" preload="none"></audio>
-        <div style="display:flex;align-items:center;gap:18px;background:linear-gradient(180deg,#fffdf8,#f6efe0);border:1.5px solid #d3bd85;border-radius:16px;padding:16px 20px;box-shadow:0 10px 26px -18px rgba(70,55,20,.4)">
-          <button onClick="{{ togglePlay }}" aria-label="Відтворити" style="flex:none;width:52px;height:52px;border-radius:50%;border:1.5px solid #c2a35f;background:#46603f;color:#f6efe0;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1">{{ playGlyph }}</button>
-          <div style="flex:1;min-width:0">
-            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">
-              <span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;color:#46603f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Пісня наших сердець</span>
-              <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#9a8f70;white-space:nowrap">Лілія &amp; Андрій</span>
-            </div>
-            <div onClick="{{ seek }}" style="margin-top:12px;height:5px;border-radius:3px;background:#e6dcc4;cursor:pointer;position:relative">
-              <div style="{{ barFillStyle }}"></div>
-            </div>
-            <div style="display:flex;justify-content:space-between;margin-top:7px;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.05em;color:#9a8f70">
-              <span>{{ curLabel }}</span><span>{{ durLabel }}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- GALLERY -->
-      <div style="margin-top:52px">
-        <div style="text-align:center;margin-bottom:20px">
-          <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.34em;font-size:12px;color:#9a7c3e;text-transform:uppercase;padding-left:.34em">Дорогі миті</div>
-          <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#46603f;margin:6px 0 0">Наші світлини</h3>
-        </div>
-        <div class="row g-2 g-md-3">
-          <div class="col-6"><image-slot id="g1" style="width:100%;height:150px" shape="rounded" radius="10" placeholder="Фото"></image-slot></div>
-          <div class="col-6"><image-slot id="g2" style="width:100%;height:150px" shape="rounded" radius="10" placeholder="Фото"></image-slot></div>
-          <div class="col-6"><image-slot id="g3" style="width:100%;height:150px" shape="rounded" radius="10" placeholder="Фото"></image-slot></div>
-          <div class="col-6"><image-slot id="g4" style="width:100%;height:150px" shape="rounded" radius="10" placeholder="Фото"></image-slot></div>
-          <div class="col-6"><image-slot id="g5" style="width:100%;height:150px" shape="rounded" radius="10" placeholder="Фото"></image-slot></div>
-          <div class="col-6"><image-slot id="g6" style="width:100%;height:150px" shape="rounded" radius="10" placeholder="Фото"></image-slot></div>
-          <div class="col-6 mx-auto"><image-slot id="g7" style="width:100%;height:150px" shape="rounded" radius="10" placeholder="Фото"></image-slot></div>
-        </div>
-      </div>
-
-      <!-- footer -->
-      <div style="text-align:center;margin-top:54px">
-        <span style="font-family:'Cormorant Garamond',serif;color:#b1904f;font-size:26px">&#9825;</span>
-        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:#5b5440;margin:10px 0 0">З любов'ю та вдячністю,</p>
-        <div style="font-family:'Cormorant Garamond',serif;letter-spacing:.2em;font-size:13px;color:#9a7c3e;text-transform:uppercase;margin-top:4px">Наречені</div>
-        <div class="bottom-name" style="font-family:'Marck Script',cursive;font-size:34px;color:#46603f;margin-top:8px">Лілія та Андрій</div>
-      </div>
-
-    </div>
+    </sc-if>
   </div>
-</div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:620,&quot;height&quot;:900},&quot;videoHref&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Медіа&quot;}}">
-class Component extends DCLogic {
-  state = {
-    playing:false, cur:0, dur:204,
-    locked: !(typeof localStorage!=='undefined' && localStorage.getItem('vinch_unlocked')==='1'),
-    err:false, fading:false
-  };
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:620,&quot;height&quot;:900},&quot;mainPhotoUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;/assets/main_1.jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Фото&quot;},&quot;photo1&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;/assets/gallery/1.jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Фото галереї&quot;},&quot;photo2&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;/assets/gallery/2.jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Фото галереї&quot;},&quot;photo3&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;/assets/gallery/3.jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Фото галереї&quot;},&quot;photo4&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;/assets/gallery/4.jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Фото галереї&quot;},&quot;photo5&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;/assets/gallery/5.jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Фото галереї&quot;},&quot;photo6&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;/assets/gallery/6.jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Фото галереї&quot;},&quot;photo7&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;/assets/gallery/7.jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Фото галереї&quot;},&quot;video1Url&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://www.youtube.com/watch?v=jX4jySkP6FQ&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Медіа&quot;},&quot;video2Url&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Медіа&quot;}}">
+  class Component extends DCLogic {
+    state = {
+      playing:false, cur:0, dur:204,
+      locked: !(typeof localStorage!=='undefined' && localStorage.getItem('vinch_unlocked')==='1'),
+      err:false, fading:false,
+      videoOpen:false, activeVideo:null,
+      lbOpen:false, lbImgs:[], lbIdx:0
+    };
 
-  componentDidMount(){
-    if (this.state.locked){
-      document.body.style.overflow='hidden';
-      setTimeout(()=>{ const i=document.getElementById('date-input'); if(i)i.focus(); },350);
-      setTimeout(()=>{
-        const n=document.getElementById('date-native');
-        if(n && !n._bound){ n._bound=true; n.addEventListener('change',this.onNativePick); }
-      },350);
+    ytId(url){
+      const m=(url||'').match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([\w-]{11})/);
+      return m?m[1]:'';
     }
-  }
 
-  submit = (e) => {
-    if (e && e.preventDefault) e.preventDefault();
-    const el = document.getElementById('date-input');
-    const raw = (el ? el.value : '').replace(/\D/g,'');
-    if (raw==='140220' || raw==='14022020'){ this.unlock(); }
-    else { this.setState({err:true}); }
-  };
-
-  clearErr = () => { if (this.state.err) this.setState({err:false}); };
-
-  maskInput = (e) => {
-    const el = e.target;
-    let d = el.value.replace(/\D/g,'').slice(0,6);
-    let out = d.slice(0,2);
-    if (d.length > 2) out += '.' + d.slice(2,4);
-    if (d.length > 4) out += '.' + d.slice(4,6);
-    el.value = out;
-    if (this.state.err) this.setState({err:false});
-  };
-
-  openCalendar = () => {
-    const n = document.getElementById('date-native');
-    if (!n) return;
-    if (this.state.err) this.setState({err:false});
-    if (typeof n.showPicker === 'function') { try { n.showPicker(); return; } catch(_){} }
-    n.focus(); n.click();
-  };
-
-  onNativePick = (e) => {
-    const v = e.target.value; // yyyy-mm-dd
-    if (!v) return;
-    const [y,m,dd] = v.split('-');
-    const el = document.getElementById('date-input');
-    if (el) el.value = dd + '.' + m + '.' + y.slice(2);
-    this.setState({err:false});
-  };
-
-  unlock(){
-    this.setState({err:false});
-    this.startConfetti();
-    setTimeout(()=>this.setState({fading:true}), 700);
-    setTimeout(()=>{
-      this.setState({locked:false});
-      document.body.style.overflow='';
-      try{ localStorage.setItem('vinch_unlocked','1'); }catch(_){}
-    }, 1700);
-    setTimeout(()=>this.stopConfetti(), 4400);
-  }
-
-  startConfetti(){
-    const cv = document.getElementById('confetti-canvas'); if(!cv) return;
-    const ctx = cv.getContext('2d');
-    const dpr = window.devicePixelRatio||1;
-    const resize = () => { cv.width=innerWidth*dpr; cv.height=innerHeight*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); };
-    resize(); this._cresize=resize; window.addEventListener('resize',resize);
-    const colors=['#c2a35f','#46603f','#e8c9d4','#f5efe0','#b1904f','#8a9d6a','#d98fa8'];
-    const P=[];
-    for(let i=0;i<170;i++){
-      P.push({ x:Math.random()*innerWidth, y:-20-Math.random()*innerHeight*0.6, r:4+Math.random()*6,
-        c:colors[i%colors.length], vy:2+Math.random()*3.5, vx:-1.6+Math.random()*3.2,
-        rot:Math.random()*6.28, vr:-0.22+Math.random()*0.44, sh:Math.random()<0.55 });
+    toEmbed(url){
+      if(!url) return '';
+      let m;
+      if((m=url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([\w-]{11})/)))
+        return 'https://www.youtube.com/embed/'+m[1]+'?autoplay=1&rel=0&playsinline=1';
+      if((m=url.match(/vimeo\.com\/(?:video\/)?(\d+)/)))
+        return 'https://player.vimeo.com/video/'+m[1]+'?autoplay=1';
+      return url;
     }
-    this._conf={running:true};
-    const start=performance.now();
-    const draw=(t)=>{
-      if(!this._conf||!this._conf.running) return;
-      const el=t-start;
-      ctx.clearRect(0,0,innerWidth,innerHeight);
-      for(const p of P){
-        p.x+=p.vx; p.y+=p.vy; p.rot+=p.vr; p.vy+=0.02; p.vx*=0.995;
-        if(p.y>innerHeight+30){ if(el<2400){ p.y=-20; p.x=Math.random()*innerWidth; } }
-        ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot); ctx.fillStyle=p.c;
-        if(p.sh){ ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*1.7); }
-        else { ctx.beginPath(); ctx.arc(0,0,p.r*0.62,0,6.3); ctx.fill(); }
-        ctx.restore();
+
+    openVideoUrl = (url) => this.setState({videoOpen:true, activeVideo:(url||'').trim()});
+    closeVideo = () => this.setState({videoOpen:false, activeVideo:null});
+    stopProp = (e) => { e.stopPropagation(); };
+
+    thumbError = (e) => {
+      const t = e.target;
+      if(t && !t.dataset.fb && /maxresdefault/.test(t.src)){
+        t.dataset.fb = '1';
+        t.src = t.src.replace('maxresdefault','hqdefault');
       }
-      this._raf=requestAnimationFrame(draw);
     };
-    this._raf=requestAnimationFrame(draw);
-  }
 
-  stopConfetti(){
-    if(this._conf) this._conf.running=false;
-    if(this._raf) cancelAnimationFrame(this._raf);
-    if(this._cresize) window.removeEventListener('resize',this._cresize);
-    const cv=document.getElementById('confetti-canvas');
-    if(cv){ const ctx=cv.getContext('2d'); ctx.clearRect(0,0,cv.width,cv.height); }
-  }
+    openLb = (imgs, idx) => {
+      document.body.style.overflow = 'hidden';
+      this.setState({lbOpen:true, lbImgs:imgs, lbIdx:idx});
+    };
 
-  fmt(t){ t=Math.max(0,Math.floor(t)); const m=Math.floor(t/60), s=t%60; return m+':'+String(s).padStart(2,'0'); }
+    lbClose = () => { document.body.style.overflow=''; this.setState({lbOpen:false, lbImgs:[], lbIdx:0}); };
+    lbPrev = (e) => { if(e)e.stopPropagation(); this.setState(s=>({lbIdx:(s.lbIdx-1+s.lbImgs.length)%s.lbImgs.length})); };
+    lbNext = (e) => { if(e)e.stopPropagation(); this.setState(s=>({lbIdx:(s.lbIdx+1)%s.lbImgs.length})); };
 
-  componentWillUnmount(){ clearInterval(this._t); this.stopConfetti(); }
+    downloadAll = () => {
+      window.open('https://drive.google.com/drive/folders/11-ch_ArRD7I6qz0kS2dcFP7FipULneCY', '_blank', 'noopener,noreferrer');
+    };
 
-  togglePlay = () => {
-    const a = document.getElementById('song-audio');
-    if (a && a.src) {
-      if (this.state.playing) { a.pause(); this.setState({playing:false}); }
-      else { a.play().then(()=>{ this.setState({playing:true}); this._bind(a); }).catch(()=>this._sim()); }
-      return;
+    submit = (e) => {
+      if (e && e.preventDefault) e.preventDefault();
+      const el = document.getElementById('date-input');
+      const raw = (el ? el.value : '').replace(/\D/g,'');
+      if (raw==='140220' || raw==='14022020'){ this.unlock(); }
+      else { this.setState({err:true}); }
+    };
+
+    clearErr = () => { if (this.state.err) this.setState({err:false}); };
+
+    maskInput = (e) => {
+      const el = e.target;
+      let d = el.value.replace(/\D/g,'').slice(0,6);
+      let out = d.slice(0,2);
+      if (d.length > 2) out += '.' + d.slice(2,4);
+      if (d.length > 4) out += '.' + d.slice(4,6);
+      el.value = out;
+      if (this.state.err) this.setState({err:false});
+    };
+
+    openCalendar = () => {
+      const n = document.getElementById('date-native');
+      if (!n) return;
+      if (this.state.err) this.setState({err:false});
+      if (typeof n.showPicker === 'function') { try { n.showPicker(); return; } catch(_){} }
+      n.focus(); n.click();
+    };
+
+    onNativePick = (e) => {
+      const v = e.target.value;
+      if (!v) return;
+      const [y,m,dd] = v.split('-');
+      const el = document.getElementById('date-input');
+      if (el) el.value = dd + '.' + m + '.' + y.slice(2);
+      this.setState({err:false});
+    };
+
+    unlock(){
+      this.setState({err:false});
+      this.startConfetti();
+      setTimeout(()=>this.setState({fading:true}), 700);
+      setTimeout(()=>{
+        this.setState({locked:false});
+        document.body.style.overflow='';
+        try{ localStorage.setItem('vinch_unlocked','1'); }catch(_){}
+      }, 1700);
+      setTimeout(()=>this.stopConfetti(), 4400);
     }
-    this._sim();
-  };
 
-  _bind(a){
-    if (this._bound) return; this._bound = true;
-    a.addEventListener('timeupdate',()=>this.setState({cur:a.currentTime, dur:a.duration||this.state.dur}));
-    a.addEventListener('ended',()=>this.setState({playing:false,cur:0}));
-  }
+    startConfetti(){
+      const cv = document.getElementById('confetti-canvas'); if(!cv) return;
+      const ctx = cv.getContext('2d');
+      const dpr = window.devicePixelRatio||1;
+      const resize = () => { cv.width=innerWidth*dpr; cv.height=innerHeight*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); };
+      resize(); this._cresize=resize; window.addEventListener('resize',resize);
+      const colors=['#c2a35f','#46603f','#e8c9d4','#f5efe0','#b1904f','#8a9d6a','#d98fa8'];
+      const P=[];
+      for(let i=0;i<170;i++){
+        P.push({ x:Math.random()*innerWidth, y:-20-Math.random()*innerHeight*0.6, r:4+Math.random()*6,
+          c:colors[i%colors.length], vy:2+Math.random()*3.5, vx:-1.6+Math.random()*3.2,
+          rot:Math.random()*6.28, vr:-0.22+Math.random()*0.44, sh:Math.random()<0.55 });
+      }
+      this._conf={running:true};
+      const start=performance.now();
+      const draw=(t)=>{
+        if(!this._conf||!this._conf.running) return;
+        const el=t-start;
+        ctx.clearRect(0,0,innerWidth,innerHeight);
+        for(const p of P){
+          p.x+=p.vx; p.y+=p.vy; p.rot+=p.vr; p.vy+=0.02; p.vx*=0.995;
+          if(p.y>innerHeight+30){ if(el<2400){ p.y=-20; p.x=Math.random()*innerWidth; } }
+          ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot); ctx.fillStyle=p.c;
+          if(p.sh){ ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*1.7); }
+          else { ctx.beginPath(); ctx.arc(0,0,p.r*0.62,0,6.3); ctx.fill(); }
+          ctx.restore();
+        }
+        this._raf=requestAnimationFrame(draw);
+      };
+      this._raf=requestAnimationFrame(draw);
+    }
 
-  _sim(){
-    if (this.state.playing){ clearInterval(this._t); this.setState({playing:false}); return; }
-    this.setState({playing:true});
-    this._t = setInterval(()=>{
-      this.setState(s=>{
-        const cur = s.cur + 0.25;
-        if (cur >= s.dur){ clearInterval(this._t); return {cur:0, playing:false}; }
-        return {cur};
-      });
-    },250);
-  }
+    stopConfetti(){
+      if(this._conf) this._conf.running=false;
+      if(this._raf) cancelAnimationFrame(this._raf);
+      if(this._cresize) window.removeEventListener('resize',this._cresize);
+      const cv=document.getElementById('confetti-canvas');
+      if(cv){ const ctx=cv.getContext('2d'); ctx.clearRect(0,0,cv.width,cv.height); }
+    }
 
-  seek = (e) => {
-    const r = e.currentTarget.getBoundingClientRect();
-    const ratio = Math.min(1,Math.max(0,(e.clientX-r.left)/r.width));
-    const cur = ratio*this.state.dur;
-    const a = document.getElementById('song-audio');
-    if (a && a.src) a.currentTime = cur;
-    this.setState({cur});
-  };
+    fmt(t){ t=Math.max(0,Math.floor(t)); const m=Math.floor(t/60), s=t%60; return m+':'+String(s).padStart(2,'0'); }
 
-  renderVals(){
-    const { playing, cur, dur, err, fading } = this.state;
-    const pct = dur ? (cur/dur*100) : 0;
-    return {
-      locked: this.state.locked,
-      err,
-      submit: this.submit,
-      clearErr: this.clearErr,
-      maskInput: this.maskInput,
-      openCalendar: this.openCalendar,
-      onNativePick: this.onNativePick,
-      gateStyle: { position:'fixed', inset:0, zIndex:60, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px', background:'radial-gradient(120% 90% at 50% 0%,#efe7d6 0%,#e4dac6 60%,#ded2ba 100%)', opacity: fading?0:1, transition:'opacity 1s ease' },
-      gateCardStyle: { position:'relative', zIndex:2, width:'460px', maxWidth:'100%', textAlign:'center', background:'rgba(251,246,236,.92)', backdropFilter:'blur(2px)', border:'1.4px solid #c2a35f', borderRadius:'6px', padding:'46px 40px', boxShadow:'0 30px 70px -30px rgba(70,55,20,.5)', animation: err?'shk .5s':'none' },
-      togglePlay: this.togglePlay,
-      seek: this.seek,
-      playGlyph: playing ? '❚❚' : '►',
-      curLabel: this.fmt(cur),
-      durLabel: this.fmt(dur),
-      videoHref: this.props.videoHref ?? '#',
-      barFillStyle: { position:'absolute', left:0, top:0, height:'100%', width:pct+'%', borderRadius:'3px', background:'linear-gradient(90deg,#8a9d6a,#46603f)', transition:'width .12s linear' },
+    componentDidMount(){
+      if (this.state.locked){
+        document.body.style.overflow='hidden';
+        setTimeout(()=>{ const i=document.getElementById('date-input'); if(i)i.focus(); },350);
+        setTimeout(()=>{
+          const n=document.getElementById('date-native');
+          if(n && !n._bound){ n._bound=true; n.addEventListener('change',this.onNativePick); }
+        },350);
+      }
+      this._esc = (e)=>{
+        if(e.key==='Escape'){ if(this.state.lbOpen) this.lbClose(); else if(this.state.videoOpen) this.closeVideo(); }
+        if(this.state.lbOpen && this.state.lbImgs.length>1){
+          if(e.key==='ArrowLeft') this.lbPrev();
+          if(e.key==='ArrowRight') this.lbNext();
+        }
+      };
+      window.addEventListener('keydown', this._esc);
+    }
+
+    componentWillUnmount(){ clearInterval(this._t); this.stopConfetti(); if(this._esc) window.removeEventListener('keydown',this._esc); }
+
+    togglePlay = () => {
+      const a = document.getElementById('song-audio');
+      if (a && a.src) {
+        if (this.state.playing) { a.pause(); this.setState({playing:false}); }
+        else { a.play().then(()=>{ this.setState({playing:true}); this._bind(a); }).catch(()=>this._sim()); }
+        return;
+      }
+      this._sim();
     };
+
+    _bind(a){
+      if (this._bound) return; this._bound = true;
+      a.addEventListener('timeupdate',()=>this.setState({cur:a.currentTime, dur:a.duration||this.state.dur}));
+      a.addEventListener('ended',()=>this.setState({playing:false,cur:0}));
+    }
+
+    _sim(){
+      if (this.state.playing){ clearInterval(this._t); this.setState({playing:false}); return; }
+      this.setState({playing:true});
+      this._t = setInterval(()=>{
+        this.setState(s=>{
+          const cur = s.cur + 0.25;
+          if (cur >= s.dur){ clearInterval(this._t); return {cur:0, playing:false}; }
+          return {cur};
+        });
+      },250);
+    }
+
+    seek = (e) => {
+      const r = e.currentTarget.getBoundingClientRect();
+      const ratio = Math.min(1,Math.max(0,(e.clientX-r.left)/r.width));
+      const cur = ratio*this.state.dur;
+      const a = document.getElementById('song-audio');
+      if (a && a.src) a.currentTime = cur;
+      this.setState({cur});
+    };
+
+    renderVals(){
+      const { playing, cur, dur, err, fading } = this.state;
+      const pct = dur ? (cur/dur*100) : 0;
+
+      const mk = (url) => {
+        const id = this.ytId(url);
+        return id ? ('https://img.youtube.com/vi/'+id+'/hqdefault.jpg') : '';
+      };
+      const v1 = (this.props.video1Url||'').trim();
+      const v2 = (this.props.video2Url||'').trim();
+      const count = (v1?1:0) + (v2?1:0);
+
+      const mainPhoto = (this.props.mainPhotoUrl || '/assets/main_1.jpg').trim();
+      const mainPhotoImg = mainPhoto
+        ? React.createElement('img', {src: mainPhoto, alt:'Головне фото пари', style:{width:'100%',height:'100%',objectFit:'cover',display:'block'}})
+        : React.createElement('div', {style:{width:'100%',height:'100%',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:"'Cormorant Garamond',serif",fontStyle:'italic',color:'#a99f80',fontSize:'15px',textAlign:'center',padding:'20px'}}, 'Вставте посилання на головне фото в налаштуваннях');
+
+      const rawPhotos = [1,2,3,4,5,6,7].map(i => (this.props['photo'+i] || `/assets/gallery/${i}.jpg`).trim());
+      const filledPhotos = rawPhotos.filter(Boolean);
+      const photoVals = {};
+      let fi = 0;
+
+      const cellBase = {
+        position: 'relative',
+        width: '100%',
+        aspectRatio: '4/3',
+        borderRadius: '12px',
+        overflow: 'hidden',
+        border: '1px solid #e3d6b3',
+        background: '#1a160c'
+      };
+
+      [1,2,3,4,5,6,7].forEach(i => {
+        const url = rawPhotos[i-1];
+        if (url) {
+          const myIdx = fi++;
+          photoVals['photo'+i+'Img'] = React.createElement('div', {
+            onClick: () => this.openLb(filledPhotos, myIdx),
+            style: { ...cellBase, cursor: 'pointer' }
+          }, [
+            // Розмитий фоновий шар
+            React.createElement('div', {
+              key: 'blur-bg',
+              style: {
+                position: 'absolute',
+                inset: 0,
+                backgroundImage: `url(${url})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                filter: 'blur(14px) brightness(0.8)',
+                transform: 'scale(1.15)',
+                opacity: 0.6
+              }
+            }),
+            // Чітке оригінальне фото поверх фону
+            React.createElement('img', {
+              key: 'main-img',
+              src: url,
+              alt: 'Світлина',
+              style: {
+                position: 'relative',
+                width: '100%',
+                height: '100%',
+                objectFit: 'contain',
+                display: 'block'
+              }
+            })
+          ]);
+        } else {
+          photoVals['photo'+i+'Img'] = React.createElement('div', {
+            style: { ...cellBase, height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Cormorant Garamond',serif", fontStyle: 'italic', color: '#b3a680', fontSize: '13px' }
+          }, 'Фото ' + i);
+        }
+      });
+
+      return {
+        mainPhotoImg,
+        ...photoVals,
+        locked: this.state.locked,
+        err,
+        submit: this.submit,
+        clearErr: this.clearErr,
+        maskInput: this.maskInput,
+        openCalendar: this.openCalendar,
+        onNativePick: this.onNativePick,
+        gateStyle: { position:'fixed', inset:0, zIndex:60, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px', background:'radial-gradient(120% 90% at 50% 0%,#efe7d6 0%,#e4dac6 60%,#ded2ba 100%)', opacity: fading?0:1, transition:'opacity 1s ease' },
+        gateCardStyle: { position:'relative', zIndex:2, width:'460px', maxWidth:'100%', textAlign:'center', background:'rgba(251,246,236,.92)', backdropFilter:'blur(2px)', border:'1.4px solid #c2a35f', borderRadius:'6px', padding:'46px 40px', boxShadow:'0 30px 70px -30px rgba(70,55,20,.5)', animation: err?'shk .5s':'none' },
+        togglePlay: this.togglePlay,
+        seek: this.seek,
+        playGlyph: playing ? '❚❚' : '►',
+        curLabel: this.fmt(cur),
+        durLabel: this.fmt(dur),
+        video1Has: !!v1,
+        video1ThumbImg: v1 ? React.createElement('img', {src: mk(v1), alt:'', style:{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover',display:'block'}}) : null,
+        video1Label: 'Наша історія кохання',
+        video1Open: () => this.openVideoUrl(v1),
+        video2Has: !!v2,
+        video2ThumbImg: v2 ? React.createElement('img', {src: mk(v2), alt:'', style:{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover',display:'block'}}) : null,
+        video2Label: 'Запрошення від нас',
+        video2Open: () => this.openVideoUrl(v2),
+        videoColClass: count > 1 ? 'col-12 col-sm-6' : 'col-12 col-md-9',
+        closeVideo: this.closeVideo,
+        stopProp: this.stopProp,
+        downloadAll: this.downloadAll,
+        videoOpen: this.state.videoOpen,
+        videoEmbed: this.state.videoOpen && this.state.activeVideo ? this.toEmbed(this.state.activeVideo) : '',
+        videoEmpty: this.state.videoOpen && !this.state.activeVideo,
+        videoWatchUrl: this.state.videoOpen && this.state.activeVideo ? this.state.activeVideo : '',
+        lbOpen: this.state.lbOpen,
+        lbSrc: this.state.lbImgs[this.state.lbIdx] || '',
+        lbCounter: this.state.lbImgs.length ? ((this.state.lbIdx+1)+' / '+this.state.lbImgs.length) : '',
+        lbMulti: this.state.lbImgs.length > 1,
+        lbClose: this.lbClose,
+        lbPrev: this.lbPrev,
+        lbNext: this.lbNext,
+        barFillStyle: { position:'absolute', left:0, top:0, height:'100%', width:pct+'%', borderRadius:'3px', background:'linear-gradient(90deg,#8a9d6a,#46603f)', transition:'width .12s linear' },
+      };
+    }
   }
-}
 </script>
 </body>
 </html>
